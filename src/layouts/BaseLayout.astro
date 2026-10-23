@@ -1,0 +1,83 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  // Only the 404 page changes this (noindex).
+  robots?: string;
+}
+
+const { title, description, robots = 'index, follow' } = Astro.props;
+
+const site = Astro.site ?? new URL('https://ownpremise.com');
+// Canonical URLs carry a trailing slash on every route except the root, to
+// match what the sitemap integration emits for the directory build format.
+const path = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/?$/, '/');
+const canonicalUrl = new URL(path, site).href;
+const ogImageUrl = new URL('/og-image.png', site).href;
+const fullTitle = title === 'Ownpremise' ? title : `${title} | Ownpremise`;
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link
+      rel="preload"
+      href="/fonts/Inter-VariableFont_opsz_wght.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ownpremise" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Ownpremise. Your premises. Your premise." />
+    <meta property="og:locale" content="en_GB" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <a href="#main" class="skip">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .skip {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--fg);
+    color: var(--bg);
+    z-index: 10;
+  }
+
+  .skip:focus {
+    top: 1rem;
+  }
+</style>

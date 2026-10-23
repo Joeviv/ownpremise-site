@@ -1,0 +1,290 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Mark from '../components/Mark.astro';
+
+const faq = [
+  {
+    q: 'Where does our data go?',
+    a: 'Nowhere. The database, the documents and the assistant’s index live on a server on your premises, inside your network. In the Sealed and Connected profiles the application makes no outbound call at all. In the two assistant profiles, only what you have explicitly allowed or classified as safe to send leaves, and every instance of it is logged.',
+  },
+  {
+    q: 'What hardware do we need?',
+    a: 'A server you or your partner control. The size depends on how many people use it and whether the assistant runs local models, which need more memory and a capable processor. Your partner sizes it during scoping and can specify, supply or qualify what you already have.',
+  },
+  {
+    q: 'How are updates delivered?',
+    a: 'As signed bundles. Your partner, or your own staff, places an update on your server; the server verifies the signature and then serves the update to your clients. No client fetches software from outside your premises, and a bundle that does not match its signature is refused.',
+  },
+  {
+    q: 'Who operates it?',
+    a: 'A partner in your region, or your own team with the partner as second line. The partner scopes, installs, updates, backs up and monitors the instance and takes your first call. We build and sign the platform and support the partners. We do not need access to your instance.',
+  },
+  {
+    q: 'Is it available in my country?',
+    a: 'Ownpremise is in evaluation with early partners, and the partner list is published as agreements are concluded. If there is no partner in your region yet, write to us and we will say what the options are.',
+  },
+];
+---
+
+<BaseLayout
+  title="Ownpremise"
+  description="Ownpremise is the business platform that runs where your data lives. One instance on your own hardware, for your company alone. ERP, projects, documents, knowledge, stakeholders, finance, inventory and a private assistant over your own documents."
+>
+  <section class="hero blueprint">
+    <div class="wrap">
+      <h1>The business platform that runs where your data lives.</h1>
+      <ul class="chips" aria-label="Three things that are always true">
+        <li class="chip">On your premises</li>
+        <li class="chip">One instance per customer</li>
+        <li class="chip">Nothing leaves without your say</li>
+      </ul>
+      <div class="btn-row">
+        <a class="btn" href="/contact">Request an evaluation</a>
+      </div>
+      <p class="hero-status">In evaluation with early partners.</p>
+    </div>
+  </section>
+
+  <section class="section" id="what">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><span class="num">01</span>What it is</span>
+        <h2>One application, on your server, for your company alone.</h2>
+      </div>
+      <div class="cards cards-4">
+        <div class="card">
+          <Mark size={22} class="card-mark" />
+          <h3>One application</h3>
+          <p>
+            ERP, projects, documents, knowledge, stakeholders, calendar, finance, inventory and a
+            private assistant. One set of records, one set of permissions, one audit trail.
+          </p>
+        </div>
+        <div class="card">
+          <Mark size={22} class="card-mark" />
+          <h3>On your premises</h3>
+          <p>
+            It runs on hardware you or your partner control, inside your network. Nothing is copied to a
+            service you cannot inspect.
+          </p>
+        </div>
+        <div class="card">
+          <Mark size={22} class="card-mark" />
+          <h3>Nothing leaves without your say</h3>
+          <p>
+            The deployment profile decides what, if anything, is allowed out. Two of the four profiles
+            allow nothing. The rest log every call.
+          </p>
+        </div>
+        <div class="card">
+          <Mark size={22} class="card-mark" />
+          <h3>Yours alone</h3>
+          <p>
+            One instance per customer. No shared database, no shared tenant, no neighbour. Licensed per
+            installation, not per token.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="blueprint divider" aria-hidden="true"></div>
+
+  <section class="section" id="products">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><span class="num">02</span>The platform</span>
+        <h2>Three pieces. One installation.</h2>
+        <p>
+          Core is the engine, Workspace is what people use every day, and Assistant answers questions
+          over your own documents. The chips show the deployment profiles each piece supports.
+        </p>
+      </div>
+      <div class="cards cards-3">
+        <div class="card">
+          <span class="card-kicker">02.1</span>
+          <h3>Ownpremise Core</h3>
+          <p>The engine. Everything else runs on it.</p>
+          <ul>
+            <li>Application server, built in Rust, as the only door to the data</li>
+            <li>Database on your server</li>
+            <li>Signed builds and a licence file</li>
+            <li>Updates served by your own server</li>
+            <li>Tamper-evident audit trail</li>
+            <li>Hardware keys for sign-in</li>
+          </ul>
+          <ul class="chips" aria-label="Deployment profiles">
+            <li class="chip">Sealed</li>
+            <li class="chip">Connected</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="card-kicker">02.2</span>
+          <h3>Ownpremise Workspace</h3>
+          <p>What your people use every day.</p>
+          <ul>
+            <li>ERP</li>
+            <li>Projects: project, phase, task</li>
+            <li>Documents and knowledge library</li>
+            <li>Stakeholders and calendar</li>
+            <li>Finance and inventory</li>
+            <li>Multilingual; modules switched on by licence</li>
+          </ul>
+          <ul class="chips" aria-label="Deployment profiles">
+            <li class="chip">Sealed</li>
+            <li class="chip">Connected</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="card-kicker">02.3</span>
+          <h3>Ownpremise Assistant</h3>
+          <p>A private assistant over your own documents, with local models.</p>
+          <ul>
+            <li>Answers cite their sources</li>
+            <li>Reads only what the person asking may read</li>
+            <li>Local models by default</li>
+            <li>The deployment profile decides what leaves, if anything</li>
+          </ul>
+          <ul class="chips" aria-label="Deployment profiles">
+            <li class="chip">Sealed</li>
+            <li class="chip">Connected</li>
+            <li class="chip">Controlled egress</li>
+            <li class="chip">Integrated</li>
+          </ul>
+        </div>
+      </div>
+      <p class="after">
+        <a href="/platform">Each piece in detail</a> or
+        <a href="/deployment">the four deployment profiles</a>
+      </p>
+    </div>
+  </section>
+
+  <div class="blueprint divider" aria-hidden="true"></div>
+
+  <section class="section" id="compare">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><span class="num">03</span>Compared</span>
+        <h2>Against the two usual answers.</h2>
+      </div>
+      <div class="table-wrap">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th scope="col"><span class="visually-hidden">Criterion</span></th>
+              <th scope="col">Cloud suites</th>
+              <th scope="col">Build in-house</th>
+              <th scope="col" class="us">Ownpremise</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Data stays on your premises</th>
+              <td>No. It lives in the vendor's cloud.</td>
+              <td>Yes, if you build it that way.</td>
+              <td class="us yes">Yes, by design.</td>
+            </tr>
+            <tr>
+              <th scope="row">One instance per customer</th>
+              <td>No. Shared tenancy.</td>
+              <td>Yes.</td>
+              <td class="us yes">Yes.</td>
+            </tr>
+            <tr>
+              <th scope="row">Licensed per installation, not per token</th>
+              <td>Per seat, per usage, or both.</td>
+              <td>No licence. Your payroll instead.</td>
+              <td class="us yes">Yes.</td>
+            </tr>
+            <tr>
+              <th scope="row">Audit trail you control</th>
+              <td>The vendor's logs, on request.</td>
+              <td>If you build one.</td>
+              <td class="us yes">Yes. Append-only, on your server.</td>
+            </tr>
+            <tr>
+              <th scope="row">Time to a working evaluation</th>
+              <td>Days.</td>
+              <td>Months to years.</td>
+              <td class="us">Weeks.</td>
+            </tr>
+            <tr>
+              <th scope="row">Who maintains it</th>
+              <td>The vendor, on its schedule.</td>
+              <td>Your team, for good.</td>
+              <td class="us">Your regional partner, with signed updates.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div class="blueprint divider" aria-hidden="true"></div>
+
+  <section class="section" id="partners">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><span class="num">04</span>Available through partners in your region</span>
+        <h2>We license the platform. Partners deploy and operate it.</h2>
+        <p>
+          Because the platform runs on your premises, the people who install and operate it need to
+          be able to reach them. Partners scope the installation, specify or supply the hardware,
+          operate the instance and take your first call.
+        </p>
+      </div>
+      <div class="btn-row" style="margin-top: 0">
+        <a class="btn btn-ghost" href="/partners">How the partner model works</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="blueprint divider" aria-hidden="true"></div>
+
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><span class="num">05</span>Questions</span>
+        <h2>Five honest answers.</h2>
+      </div>
+      <div class="faq">
+        {faq.map((item) => (
+          <details>
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band blueprint">
+    <div class="wrap">
+      <span class="eyebrow"><span class="num">06</span>Evaluation</span>
+      <h2>Request an evaluation.</h2>
+      <p class="measure" style="margin-top: 1.25rem">
+        Ownpremise is in evaluation with early partners. If your organisation keeps data that should
+        not leave the building, we would like to hear from you.
+      </p>
+      <div class="btn-row">
+        <a class="btn" href="/contact">Request an evaluation</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .after {
+    margin-top: 2rem;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+</style>

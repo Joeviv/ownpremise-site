@@ -1,0 +1,41 @@
+---
+// Own 404 page. Astro emits it as `dist/404.html`; Amplify serves it with
+// status 404 once its `/<*>` rule points to `/404.html`. Kept out of the
+// sitemap by the filter in astro.config.mjs and marked noindex here.
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page not found"
+  description="The page you asked for does not exist or has moved."
+  robots="noindex, follow"
+>
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow"><span class="num">404</span>Not found</span>
+      <h1>Page not found.</h1>
+      <p class="lede" style="margin-top: 1.5rem">
+        The page you asked for does not exist or has moved. These do.
+      </p>
+      <ul class="links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/platform">Platform</a></li>
+        <li><a href="/deployment">Deployment</a></li>
+        <li><a href="/security">Security</a></li>
+        <li><a href="/partners">Partners</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .links {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2rem;
+  }
+</style>

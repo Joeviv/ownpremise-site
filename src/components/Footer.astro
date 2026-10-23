@@ -1,0 +1,118 @@
+---
+import Mark from './Mark.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div class="brand">
+        <a href="/" class="wordmark" aria-label="Ownpremise, home">
+          <Mark size={18} class="mark" />
+          <span>ownpremise</span>
+        </a>
+        <p class="muted">The business platform that runs where your data lives.</p>
+        <p class="status">In evaluation with early partners</p>
+      </div>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="/platform">Platform</a></li>
+          <li><a href="/deployment">Deployment</a></li>
+          <li><a href="/security">Security</a></li>
+          <li><a href="/partners">Partners</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/legal/privacy">Privacy notice</a></li>
+          <li><a href="/legal/notice">Legal notice</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="legal">
+      <p>
+        Ownpremise is a product of StackSolver UK Limited. Company No. 16227080.
+        Registered office: 215 Ditchling Road, Brighton BN1 6JD, United Kingdom.
+      </p>
+      <p>&copy; {year} StackSolver UK Limited. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--rule);
+    padding-block: 3rem 2rem;
+    font-size: 0.9375rem;
+  }
+
+  .cols {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.125rem;
+    letter-spacing: -0.03em;
+    text-decoration: none;
+    color: var(--fg);
+  }
+
+  .wordmark :global(.mark) {
+    color: var(--accent);
+  }
+
+  .brand p {
+    margin-top: 0.75rem;
+    max-width: 24rem;
+  }
+
+  .brand .status {
+    margin-top: 1rem;
+  }
+
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: var(--fg-muted);
+  }
+
+  nav a:hover {
+    color: var(--fg);
+    text-decoration: underline;
+  }
+
+  .legal {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    color: var(--fg-muted);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+
+  .legal p + p {
+    margin-top: 0.5rem;
+  }
+
+  @media (min-width: 48rem) {
+    .cols {
+      grid-template-columns: 1fr auto;
+      gap: 4rem;
+    }
+
+    nav ul {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 3rem;
+    }
+  }
+</style>

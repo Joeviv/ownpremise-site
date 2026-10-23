@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const email = 'hello@stacksolveruk.com';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Request an evaluation of Ownpremise or ask about becoming a partner. We reply within two working days."
+>
+  <section class="hero blueprint">
+    <div class="wrap">
+      <span class="eyebrow"><span class="num">00</span>Contact</span>
+      <h1>Write to us.</h1>
+      <p class="lede" style="margin-top: 1.5rem">
+        There is no form on this site. The links below open your own email client; nothing is sent
+        through a third party. We reply within two working days.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cards">
+        <div class="card">
+          <span class="card-kicker">01</span>
+          <h3>Request an evaluation</h3>
+          <p>
+            Tell us about your organisation, the kind of data you keep, where it lives today and the
+            deployment profile you have in mind. If you are not sure which profile, say so.
+          </p>
+          <p class="cta">
+            <a class="btn" href={`mailto:${email}?subject=Evaluation%20request`}>Request an evaluation</a>
+          </p>
+        </div>
+        <div class="card">
+          <span class="card-kicker">02</span>
+          <h3>Become a partner</h3>
+          <p>
+            Tell us your region, what you operate today and the kind of customers you serve. We will
+            come back with what the partner model looks like where you are.
+          </p>
+          <p class="cta">
+            <a class="btn btn-ghost" href={`mailto:${email}?subject=Partner%20enquiry`}>Become a partner</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <span class="eyebrow"><span class="num">03</span>Details</span>
+      <h2 style="margin-top: 0">Email and post</h2>
+      <p>
+        Email: <a href={`mailto:${email}`}>{email}</a>
+      </p>
+      <address style="margin-top: 1em">
+        StackSolver UK Limited<br />
+        215 Ditchling Road<br />
+        Brighton BN1 6JD<br />
+        United Kingdom
+      </address>
+      <p class="muted" style="margin-top: 1.5em; font-size: 0.9375rem">
+        What happens to a message you send us is described in the
+        <a href="/legal/privacy">privacy notice</a>. Who we are, in law, is in the
+        <a href="/legal/notice">legal notice</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .cta {
+    margin-top: 1rem;
+  }
+</style>

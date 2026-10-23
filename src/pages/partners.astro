@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Partners"
+  description="Ownpremise is licensed by its maker and deployed and operated by partners in their region. What a partner does, what we do, and how to become a partner."
+>
+  <section class="hero blueprint">
+    <div class="wrap">
+      <span class="eyebrow"><span class="num">00</span>Partners</span>
+      <h1>We license the platform. Partners deploy and operate it in their region.</h1>
+      <p class="lede" style="margin-top: 1.5rem">
+        Ownpremise runs on your premises, so the people who install and operate it need to be able to
+        reach them. That is why the platform is available through partners: companies in your region
+        who know the local requirements and can be on site.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><span class="num">01</span>The model</span>
+        <h2>Who does what.</h2>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3>What a partner does</h3>
+          <ul class="list">
+            <li><strong>Scoping.</strong> Requirements, deployment profile, sizing and the plan to get there.</li>
+            <li><strong>Hardware.</strong> Specify, supply, or qualify what you already have.</li>
+            <li><strong>Operation.</strong> Install, update, back up and monitor the instance.</li>
+            <li><strong>First-line support.</strong> Your first call, in your language and your time zone.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>What we do</h3>
+          <ul class="list">
+            <li><strong>Build and sign</strong> the platform and every release.</li>
+            <li><strong>License</strong> the platform to you, through your partner, per installation.</li>
+            <li><strong>Train and support</strong> partners, as their second line.</li>
+            <li><strong>Stay out of your premises.</strong> We do not need access to your instance to do any of the above.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="blueprint divider" aria-hidden="true"></div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><span class="num">02</span>Territory</span>
+        <h2>One partner, one agreed territory.</h2>
+        <p>
+          Each partner represents the platform in an agreed territory and, where relevant, an agreed
+          sector. The partner list is published here as agreements are concluded. If there is no
+          partner in your region yet, tell us and we will say what the options are.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band blueprint" id="become">
+    <div class="wrap">
+      <span class="eyebrow"><span class="num">03</span>Become a partner</span>
+      <h2>Represent Ownpremise in your region.</h2>
+      <p class="measure" style="margin-top: 1.25rem">
+        If you deploy and operate systems for organisations that keep sensitive data, and you want to
+        represent the platform where you are, write to us. Tell us your region, what you operate today
+        and the kind of customers you serve.
+      </p>
+      <div class="btn-row">
+        <a class="btn" href="mailto:hello@stacksolveruk.com?subject=Partner%20enquiry">Become a partner</a>
+        <a class="btn btn-ghost" href="/contact">Other ways to contact us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--fg-muted);
+  }
+
+  .list li {
+    padding: 0.6rem 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .list li::before {
+    content: none;
+  }
+
+  .list li:first-child {
+    border-top: 0;
+  }
+
+  .list strong {
+    color: var(--fg);
+    font-weight: 600;
+  }
+</style>

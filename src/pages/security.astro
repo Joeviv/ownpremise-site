@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Security"
+  description="How Ownpremise is secured: hardware keys with WebAuthn, an audit trail that cannot be edited, one instance per customer, signed builds, updates served by your own server, the application server as the only door to the database, and a codebase built in Rust."
+>
+  <section class="hero blueprint">
+    <div class="wrap">
+      <span class="eyebrow"><span class="num">00</span>Security</span>
+      <h1>Built to be checked.</h1>
+      <p class="lede" style="margin-top: 1.5rem">
+        Security claims are easy to write. Each point below says what the platform does and how you
+        can see it for yourself during an evaluation.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><span class="num">01</span>Seven points</span>
+        <h2>What it does, and how you see it.</h2>
+      </div>
+      <ol class="points">
+        <li>
+          <h3>Hardware keys</h3>
+          <div>
+            <p>
+              Sign-in uses WebAuthn. Administrators can require a hardware key for every account, so
+              there is no password to phish, reuse or leak.
+            </p>
+            <p class="mono small">See it: try to sign in to an evaluation instance without a key.</p>
+          </div>
+        </li>
+        <li>
+          <h3>An audit trail that cannot be edited</h3>
+          <div>
+            <p>
+              Every change records who did it, what changed and when. Entries are append-only. There is
+              no screen, no role and no setting that alters or deletes them.
+            </p>
+            <p class="mono small">See it: make a change as an administrator, then try to remove the entry.</p>
+          </div>
+        </li>
+        <li>
+          <h3>One instance per customer</h3>
+          <div>
+            <p>
+              Your instance holds your data and nobody else's. There is no shared database to partition
+              and no tenant boundary to get wrong.
+            </p>
+            <p class="mono small">See it: the server is yours; list what runs on it.</p>
+          </div>
+        </li>
+        <li>
+          <h3>Signed builds</h3>
+          <div>
+            <p>
+              Every release is signed. The server verifies the signature before it installs an update
+              and refuses one that does not match.
+            </p>
+            <p class="mono small">See it: alter one byte of an update bundle and watch it be rejected.</p>
+          </div>
+        </li>
+        <li>
+          <h3>Updates served by your own server</h3>
+          <div>
+            <p>
+              Updates are delivered to your server, by you or your partner, and served from there to
+              your clients. No client fetches software from outside your premises.
+            </p>
+            <p class="mono small">See it: watch the client's connections during an update.</p>
+          </div>
+        </li>
+        <li>
+          <h3>The application server is the only door to the database</h3>
+          <div>
+            <p>
+              Clients talk to the application server. Only the application server talks to the
+              database. There is no direct database access from the network, so every read and every
+              write passes through the same permissions and the same audit trail.
+            </p>
+            <p class="mono small">See it: the database listens to the application server alone.</p>
+          </div>
+        </li>
+        <li>
+          <h3>Built in Rust</h3>
+          <div>
+            <p>
+              The server and the client are written in Rust, a language that enforces memory safety at
+              compile time. That removes a whole class of defects at source instead of patching them
+              after the fact.
+            </p>
+            <p class="mono small">See it: ask for the build and its dependency list.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band blueprint">
+    <div class="wrap">
+      <span class="eyebrow"><span class="num">02</span>Reporting</span>
+      <h2>Found something?</h2>
+      <p class="measure" style="margin-top: 1.25rem">
+        Write to <a href="mailto:hello@stacksolveruk.com?subject=Security">hello@stacksolveruk.com</a>
+        with the word Security in the subject line. We reply within two working days and we will say
+        what we found and what we did about it.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .small {
+    font-size: 0.8125rem;
+    color: var(--fg-muted);
+  }
+</style>

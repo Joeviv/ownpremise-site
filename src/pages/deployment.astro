@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const profiles = [
+  {
+    id: 'sealed',
+    name: 'Sealed',
+    summary:
+      'No outbound connections. The instance is installed, licensed and updated from signed bundles that you bring in. The assistant uses local models only.',
+    leaves:
+      'Nothing. The server has no route to the outside and the application makes no outbound call.',
+    accept:
+      'Updates are applied by your own staff or your partner, on site. There is no remote support. The assistant is bounded by the local models and the hardware you provide.',
+    suited: 'Data that must not leave the building under any circumstances.',
+  },
+  {
+    id: 'connected',
+    name: 'Connected',
+    summary:
+      'Your site, your network. Remote users reach the instance through a gateway you own and operate. The application itself still makes no outbound call.',
+    leaves:
+      'Nothing from the application. The only traffic that crosses your perimeter is between your users and your gateway, under your rules.',
+    accept:
+      'Your gateway is your perimeter. Its configuration, its TLS set-up and its access policy are your responsibility or your partner’s.',
+    suited: 'Organisations with staff on more than one site or working away from the office.',
+  },
+  {
+    id: 'controlled-egress',
+    name: 'Private assistant, controlled egress',
+    summary:
+      'Local models by default. Where you choose, the assistant may call a destination on an allow list you maintain, through your own proxy. What is sent is masked by data class, and every call is logged.',
+    leaves:
+      'Only requests to destinations you have listed, through your proxy, with the content you have permitted and the classes of data you have chosen to mask removed. Nothing else.',
+    accept:
+      'You maintain the allow list. Content that reaches a listed destination is outside the instance and subject to that destination’s terms.',
+    suited: 'Teams that need a specific external service for a specific task and want it on record.',
+  },
+  {
+    id: 'integrated',
+    name: 'Private assistant, integrated',
+    summary:
+      'External models are used only for data you have classified as safe to send. Everything else stays on local models.',
+    leaves:
+      'The passages and documents you have classified as safe to send, to the model providers you have chosen. The classification is enforced by the platform and recorded in the audit trail.',
+    accept:
+      'The provider’s terms apply to what you send. Classifying data correctly is your responsibility; the platform enforces the classification and keeps the record.',
+    suited: 'Organisations that want the best available models for public material and local models for the rest.',
+  },
+];
+---
+
+<BaseLayout
+  title="Deployment"
+  description="The four Ownpremise deployment profiles: Sealed, Connected, Private assistant with controlled egress, and Private assistant integrated. Each states what leaves your premises and what you accept. No hosted tier."
+>
+  <section class="hero blueprint">
+    <div class="wrap">
+      <span class="eyebrow"><span class="num">00</span>Deployment</span>
+      <h1>Four deployment profiles.</h1>
+      <p class="lede" style="margin-top: 1.5rem">
+        Every profile runs on your premises. They differ in one thing: what, if anything, is allowed
+        to leave. You choose the profile when the instance is installed. The active profile is visible
+        to administrators and recorded in the audit trail.
+      </p>
+      <p class="lede" style="margin-top: 1rem">
+        Ownpremise runs on hardware you or your partner control. There is no hosted tier.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Profile</th>
+              <th scope="col">Outbound connections</th>
+              <th scope="col">Remote users</th>
+              <th scope="col">External models</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><a href="#sealed">Sealed</a></th>
+              <td>None</td>
+              <td>No</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#connected">Connected</a></th>
+              <td>None from the application</td>
+              <td>Through your gateway</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#controlled-egress">Private assistant, controlled egress</a></th>
+              <td>Allow list, through your proxy, masked and logged</td>
+              <td>Through your gateway</td>
+              <td>Only on the allow list</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#integrated">Private assistant, integrated</a></th>
+              <td>To chosen providers, for classified data only</td>
+              <td>Through your gateway</td>
+              <td>For data classified as safe to send</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  {profiles.map((p, i) => (
+    <section class="section profile" id={p.id}>
+      <div class="wrap">
+        <div class="profile-grid">
+          <div class="profile-head">
+            <span class="eyebrow"><span class="num">{String(i + 1).padStart(2, '0')}</span>Profile</span>
+            <h2>{p.name}</h2>
+            <p class="lede">{p.summary}</p>
+          </div>
+          <dl class="facts">
+            <div>
+              <dt>What leaves your premises</dt>
+              <dd>{p.leaves}</dd>
+            </div>
+            <div>
+              <dt>What you accept</dt>
+              <dd>{p.accept}</dd>
+            </div>
+            <div>
+              <dt>Suited to</dt>
+              <dd>{p.suited}</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="band blueprint">
+    <div class="wrap">
+      <span class="eyebrow"><span class="num">05</span>Status</span>
+      <h2>All four profiles are in evaluation with early partners.</h2>
+      <p class="measure" style="margin-top: 1.25rem">
+        Sealed installations are arranged case by case, because they need a partner who can be on
+        site for every update. Tell us which profile you have in mind and we will say what it takes.
+      </p>
+      <div class="btn-row">
+        <a class="btn" href="/contact">Request an evaluation</a>
+        <a class="btn btn-ghost" href="/security">How it is secured</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .profile-grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .profile-head .lede {
+    margin-top: 1rem;
+    font-size: 1.125rem;
+  }
+
+  @media (min-width: 64rem) {
+    .profile-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+      gap: 4rem;
+    }
+
+    .profile-grid .facts {
+      grid-template-columns: 1fr;
+      margin-top: 0;
+    }
+  }
+</style>

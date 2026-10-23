@@ -1,0 +1,37 @@
+# HTTP security headers, served by AWS Amplify on every response.
+#
+# Amplify reads THIS file. It does not read `_headers` (that is Netlify / Cloudflare Pages).
+# Verify by the receiver, never by the repo:
+#   curl -sI https://ownpremise.com | grep -iE 'strict-transport|content-security|x-frame'
+#
+# Design notes (2026-10-22, adapted from wasvelt-site):
+#  - HSTS without `includeSubDomains` and without `preload` on purpose: no subdomain is
+#    served yet, and `preload` is irreversible in practice.
+#  - The CSP starts in Report-Only: it reports in the console but does NOT block. Once it
+#    has been observed in production with zero violations, rename the key to
+#    `Content-Security-Policy` to make it binding.
+#  - Permissions-Policy denies everything sensitive. There is no video, no map and no
+#    third party on this site, so nothing is allowed through.
+#  - Inventory of third parties on 2026-10-22 over src/ and public/: none. Fonts are
+#    self-hosted from /fonts/ (file URLs, not data: URIs). Astro scoped styles are
+#    emitted as <style> blocks or as /_astro/*.css, hence 'unsafe-inline' for style-src.
+#    No <script> is emitted at all; script-src 'self' is kept so a future one is allowed
+#    only from this origin.
+
+customHeaders:
+  - pattern: '**'
+    headers:
+      - key: 'Strict-Transport-Security'
+        value: 'max-age=31536000'
+      - key: 'X-Content-Type-Options'
+        value: 'nosniff'
+      - key: 'X-Frame-Options'
+        value: 'SAMEORIGIN'
+      - key: 'Referrer-Policy'
+        value: 'strict-origin-when-cross-origin'
+      - key: 'Cross-Origin-Opener-Policy'
+        value: 'same-origin'
+      - key: 'Permissions-Policy'
+        value: 'accelerometer=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), usb=(), interest-cohort=(), autoplay=(), fullscreen=()'
+      - key: 'Content-Security-Policy-Report-Only'
+        value: "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
